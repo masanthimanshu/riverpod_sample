@@ -10,7 +10,7 @@ class PostsScreen extends ConsumerWidget {
     final response = ref.watch(postsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Riverpod Sample")),
+      appBar: AppBar(title: const Text("Posts Screen")),
       body: response.hasValue
           ? ListView.builder(
               itemCount: response.value!.length,

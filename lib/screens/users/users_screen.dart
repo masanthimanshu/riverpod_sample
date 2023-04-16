@@ -10,7 +10,7 @@ class UsersScreen extends ConsumerWidget {
     final response = ref.watch(usersProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Riverpod Sample")),
+      appBar: AppBar(title: const Text("Users Screen")),
       body: response.hasValue
           ? ListView.builder(
               itemCount: response.value!.length,
