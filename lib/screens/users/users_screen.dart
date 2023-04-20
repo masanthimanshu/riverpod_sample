@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/providers/providers.dart';
+import 'package:riverpod_sample/network/endpoints.dart';
+import 'package:riverpod_sample/controllers/users_controller.dart';
 
 class UsersScreen extends ConsumerWidget {
   const UsersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final response = ref.watch(usersProvider);
+    final response = ref.watch(getUsersDataProvider(APIEndpoints().getUsers));
 
     return Scaffold(
       appBar: AppBar(title: const Text("Users Screen")),
