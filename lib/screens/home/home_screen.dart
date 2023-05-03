@@ -17,6 +17,17 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
+                  builder: (_) => const InputField(),
+                ),
+              );
+            },
+            child: const Text("Input Field"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
                   builder: (_) => const PostsScreen(),
                 ),
               );
