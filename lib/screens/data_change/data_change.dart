@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/network/endpoints.dart';
 import 'package:riverpod_sample/controllers/data_change_controller.dart';
+import 'package:riverpod_sample/screens/data_change/custom_bottom_sheet.dart';
 
 class DataChange extends ConsumerWidget {
   const DataChange({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final response = ref.read(dataChangeProvider(APIEndpoints().dataOne));
+    final response = ref.watch(dataChangeProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text("Data Change")),
@@ -18,12 +18,20 @@ class DataChange extends ConsumerWidget {
             height: 25,
             width: double.infinity,
           ),
-          Text(response.toString()),
+          Text(response.id.toString()),
           const SizedBox(height: 10),
-          const Text("Id Goes Here"),
+          Text(response.title),
           const SizedBox(height: 25),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (BuildContext context) => const SingleChildScrollView(
+                  child: CustomBottomSheet(),
+                ),
+              );
+            },
             child: const Text("Show Bottom Sheet"),
           ),
         ],
