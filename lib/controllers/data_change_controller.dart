@@ -9,17 +9,11 @@ final dataChangeProvider =
 class DataChangeController extends StateNotifier<DataChangeModel> {
   DataChangeController() : super(DataChangeModel());
 
-  Future<DataChangeModel?> getData(String url) async {
+  void getData(String url) async {
     final data = await GetRequest().getJsonData(url);
 
     if (data != null) {
-      final apiResponse = dataChangeModelFromJson(data);
-      state = DataChangeModel(
-        id: apiResponse.id,
-        title: apiResponse.title,
-      );
+      state = dataChangeModelFromJson(data);
     }
-
-    return null;
   }
 }
