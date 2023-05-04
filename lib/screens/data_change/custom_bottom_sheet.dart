@@ -13,8 +13,6 @@ class CustomBottomSheet extends ConsumerWidget {
       child: Center(
         child: ElevatedButton(
           onPressed: () {
-            debugPrint("Executed");
-
             ref
                 .read(dataChangeProvider.notifier)
                 .getData(APIEndpoints().dataOne);
