@@ -15,8 +15,8 @@ class DataChangeController extends StateNotifier<DataChangeModel> {
     if (data != null) {
       final apiResponse = dataChangeModelFromJson(data);
       state = DataChangeModel(
+        id: apiResponse.id,
         title: apiResponse.title,
-        userId: apiResponse.userId,
       );
     }
 

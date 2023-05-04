@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/network/endpoints.dart';
 import 'package:riverpod_sample/controllers/data_change_controller.dart';
 import 'package:riverpod_sample/screens/data_change/custom_bottom_sheet.dart';
 
-class DataChange extends ConsumerWidget {
+class DataChange extends ConsumerStatefulWidget {
   const DataChange({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<DataChange> createState() => _DataChangeState();
+}
+
+class _DataChangeState extends ConsumerState<DataChange> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(dataChangeProvider.notifier).getData(APIEndpoints().dataOne);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final response = ref.watch(dataChangeProvider);
 
     return Scaffold(
@@ -18,7 +30,7 @@ class DataChange extends ConsumerWidget {
             height: 25,
             width: double.infinity,
           ),
-          Text(response.userId.toString()),
+          Text(response.id.toString()),
           const SizedBox(height: 10),
           Text(response.title ?? ""),
           const SizedBox(height: 25),

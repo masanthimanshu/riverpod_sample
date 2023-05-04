@@ -10,15 +10,25 @@ class CustomBottomSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            ref
-                .read(dataChangeProvider.notifier)
-                .getData(APIEndpoints().dataOne);
-          },
-          child: const Text("Change Data"),
-        ),
+      child: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(dataChangeProvider.notifier)
+                  .getData(APIEndpoints().dataTwo);
+            },
+            child: const Text("Change Data One"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(dataChangeProvider.notifier)
+                  .getData(APIEndpoints().dataThree);
+            },
+            child: const Text("Change Data Two"),
+          ),
+        ],
       ),
     );
   }
