@@ -7,16 +7,16 @@ String dataChangeModelToJson(DataChangeModel data) =>
     json.encode(data.toJson());
 
 class DataChangeModel {
-  final int userId;
-  final int id;
-  final String title;
-  final bool completed;
+  int? userId;
+  int? id;
+  String? title;
+  bool? completed;
 
   DataChangeModel({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.completed,
+    this.userId,
+    this.id,
+    this.title,
+    this.completed,
   });
 
   factory DataChangeModel.fromJson(Map<String, dynamic> json) =>

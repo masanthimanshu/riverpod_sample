@@ -18,9 +18,9 @@ class DataChange extends ConsumerWidget {
             height: 25,
             width: double.infinity,
           ),
-          Text(response.id.toString()),
+          Text(response.userId.toString()),
           const SizedBox(height: 10),
-          Text(response.title),
+          Text(response.title ?? ""),
           const SizedBox(height: 25),
           ElevatedButton(
             onPressed: () {
